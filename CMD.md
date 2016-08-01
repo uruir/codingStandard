@@ -7,6 +7,8 @@ echo someText >> x.txt
 del x.txt
 # 打开文件
 直接输入文件名即可用默认程序打开
+# 重命名文件
+ren before.txt after.txt
 ```
 
 ### 文件夹
