@@ -5,6 +5,7 @@
 echo someText >> x.txt
 # 删除文件
 del x.txt
+rm x.txt
 # 打开文件
 直接输入文件名即可用默认程序打开
 # 重命名文件
