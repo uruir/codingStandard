@@ -29,13 +29,10 @@ git config user.email 445767568@qq.com
 git config --system -l
 # 简写 git add commit
 git commit -am "xxx"
-# 移除已上传至远程的文件
+# 删除已上传至远程的文件（暂存区域）
 git rm --cached file && commit && push
-```
-
-## 本地
-
-```
+# 删除文件（暂存区域和本地）
+git rm --cached -f file
 # 重命名本地分支
 git branch -m before after
 ```
