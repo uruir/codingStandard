@@ -1,7 +1,7 @@
 # 「理解HTTP」之常见的状态码
 
 |Type|Reason-phrase|Note|
-|1XX|Informational|信息性状态码，表示接受的请求正在处理|
+|1XX|Informational|信息性状态码，表示接受的请求正在处理。一般禁止服务器向客户端返回此类状态码|
 |2XX|Success|成功状态码，表示请求正常处理完毕|
 |3XX|Redirection|重定向状态码，表示需要客户端需要进行附加操作|
 |4XX|Client Error|客户端错误状态码，表示服务器无法处理请求|
