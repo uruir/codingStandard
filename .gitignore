@@ -1,6 +1,5 @@
 *.xml
 .idea
 node_modules
-*xlsx
 !node_modules/pdfmake/src
 test
