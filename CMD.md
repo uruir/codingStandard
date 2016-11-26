@@ -22,4 +22,9 @@ rmdir /s/q FOLDER
 或者简写成：rd /s/q test
 ```
 
-### 
+### 服务
+
+```
+# 开启与关闭休眠
+powercfg -h on/off
+```
