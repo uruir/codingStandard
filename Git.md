@@ -3,7 +3,7 @@
 ```
 # 查看远程分支名和注释
 git branch -av
-# 查看远程分支（不全）
+# 查看远程分支的 URI
 git remote -v
 # 删除远程分支
 git push origin --delete <branchName>
