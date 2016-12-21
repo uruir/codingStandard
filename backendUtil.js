@@ -59,14 +59,6 @@ module.exports = {
     while (char.length < length) char = fill + char
     return char
   },
-  // 验证是否为邮箱
-  isEmail: function (str){
-    var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
-    return reg.test(str)
-  },
-  isCellphone: function(cellphone){
-    return (/^1[3|4|5|7|8]\d{9}$/.test(cellphone)) ? true : false
-  },
   isNumber: function(number) {
     return /^[0-9.]*$/.test(number)
   },
@@ -107,9 +99,6 @@ module.exports = {
       }
     })
   },
-  /*
-   * 通过 QQ 企业邮箱发送邮件
-   */
   sendEmailWithQQEx: function (to, subject, html) {
     // 若要给多人发送邮件：'445767568@qq.com, turui@zhizoo.com'
     var transporter = nodemailer.createTransport({
@@ -134,7 +123,6 @@ module.exports = {
       transporter.close()
     })
   },
-  // 隐藏字符串中间字符
   hideStr: function (identity, front, end) {
     var len = identity.length
     var frontStr = identity.substr(0, front)
@@ -145,5 +133,11 @@ module.exports = {
       stars += '*'
     }
     return frontStr + stars + endStr
+  },
+  getRemoteIp: function(req) {
+    return req.headers['x-forwarded-for'] ||
+      req.connection.remoteAddress ||
+      req.socket.remoteAddress ||
+      req.connection.socket.remoteAddress;
   }
 }

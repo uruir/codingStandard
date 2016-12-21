@@ -13,8 +13,8 @@ description: Git的简介，也持续更新～
 分别是 Github 上的用户名和邮箱，用于提交时的身份确认：
 
 ```
-git config --global user.name uruir
-git config --global user.email "xxx@xxx.com"
+git config --global user.name turui
+git config --global user.email xxx@xxx.com
 git config --global color.ui auto
 git config --global alias.co checkout
 ```
@@ -110,9 +110,27 @@ git remote add origin https://github.com/yourname/yourProject
 
 origin 是 github 官网上的同名项目，master 是本地默认分支，所以在提交前就在 github 官网创建同名仓库。 
 
+### 删除远程分支
+
+```
+git push origin --delete <branchName>
+```
+
+### 删除 remotes/rui/rui
+
+```
+git remote remove rui
+```
+
+### 删除远程标签
+
+```
+git push origin --delete tag <tagName>
+```
+
 ### 从远程拉回本地
 
-当在其它电脑上提交了代码后，将更新后的代码拉回本地：
+当在其它电脑上提交了代码后，将更新后的代码拉回本地（从远程 origin 的 master 分支摘取）：
 
 ```
 git pull origin master
@@ -148,6 +166,12 @@ git branch -r
 
 ```
 git branch -a
+```
+
+### 查看远程分支名和注释
+
+```
+git branch -av
 ```
 
 ### 添加分支
