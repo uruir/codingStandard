@@ -105,11 +105,7 @@ window.trUtil = {
     console.log('最多的字符是：' + maxChar + "及其次数：" + max);
   },
   reverseString: function(str) {
-    var result = '';
-    for (var i = 0, len = str.length; i < len; i++) {
-      result += str[len-i-1]; //直接使用"+"连接字符串
-    }
-    return result;
+    return str.trim().split('').reverse().join('')
   },
   isPalindrome: function(s) {
     var str = String(s);

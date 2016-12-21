@@ -1,5 +1,1 @@
-*.xml
 .idea
-node_modules
-!node_modules/pdfmake/src
-test
