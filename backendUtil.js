@@ -29,7 +29,6 @@ module.exports = {
       console.log(message.green + ', ' + content.green)
     }
   },
-  // 控制台显示
   log: function (message, content) {
     if (arguments.length === 1) {
       message = message === undefined ? '消息：空' : message
@@ -65,12 +64,9 @@ module.exports = {
     var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
     return reg.test(str)
   },
-  // TODO: 验证是否为手机
   isCellphone: function(cellphone){
-    // cellphone 可以是整型，也可以是数字字符串
     return (/^1[3|4|5|7|8]\d{9}$/.test(cellphone)) ? true : false
   },
-  // TODO: 验证是否为数值
   isNumber: function(number) {
     return /^[0-9.]*$/.test(number)
   },
@@ -94,7 +90,7 @@ module.exports = {
       service: 'QQ',
       auth: {
         user: '445767568@qq.com',
-        pass: 'frzkzjoukncscabb'
+        pass: ''
       }
     })
     var mailOptions = {
@@ -105,7 +101,7 @@ module.exports = {
     }
     transporter.sendMail(mailOptions, function(err, info){
       if(err){
-        console.log(err)
+        console.log('发送邮件失败：' + err)
       }else{
         console.log('发送邮件成功：' + JSON.stringify(info))
       }
@@ -119,19 +115,19 @@ module.exports = {
     var transporter = nodemailer.createTransport({
       service: 'QQex',
       auth: {
-        user: 'turui@zhizoo.com',
-        pass: '6L12RUtiFQry1LcN'
+        user: '',
+        pass: ''
       }
     })
     var mailOptions = {
-      from: 'turui@zhizoo.com',
+      from: '',
       to: to,
       subject: subject,
       html: html
     }
     transporter.sendMail(mailOptions, function(err, res){
       if(err){
-        console.log(err)
+        console.log('发送邮件失败：' + err)
       }else{
         console.log('发送邮件成功：' + JSON.stringify(res))
       }
@@ -139,7 +135,7 @@ module.exports = {
     })
   },
   // 隐藏字符串中间字符
-  hideIdentity: function (identity, front, end) {
+  hideStr: function (identity, front, end) {
     var len = identity.length
     var frontStr = identity.substr(0, front)
     var endStr = identity.substr(-end)

@@ -1,1 +1,5 @@
 .idea
+.gitignore
+test.js
+node_modules
+

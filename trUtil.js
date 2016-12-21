@@ -132,5 +132,22 @@ window.trUtil = {
       }
     }
     return num + 1
+  },
+  maxLetter: function (s) {
+    var obj = {}
+    var letter = ''
+    var max = 0
+    for (var i = 0, len = s.length; i < len; i++) {
+      if (obj[s[i]]) {
+        obj[s[i]]++
+        if (obj[s[i]] > max) {
+          letter = s[i]
+          max = obj[s[i]]
+        }
+      } else {
+        obj[s[i]] = 1
+      }
+    }
+    return [letter, max]
   }
 }

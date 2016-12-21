@@ -1,21 +1,4 @@
-# 发送 token
-
-```
-$(function() {
-    $.ajax({
-        type: "GET",
-        url: "godruoyi.com",
-        beforeSend: function(request) {
-            request.setRequestHeader("token", "asdadsadasdasdadadad");
-        },
-        success: function(result) {
-            alert(result);
-        }
-        });
-});
-```
-
-# 给后台传输 JSON 格式的数据
+## 给后台传输 JSON 格式的数据
 
 ```
 $.ajax({
@@ -23,8 +6,11 @@ $.ajax({
   type: 'POST',
   dataType: 'json',
   contentType: 'application/json; charset=utf-8',
+  beforeSend: function(request) {
+      request.setRequestHeader("token", "tokenValue");
+  },
   data: JSON.stringify({
-    content: totalPdfcontent
+    content: totalPDFContent
   }),
   success: function (data) {
     console.log(data)
@@ -38,4 +24,3 @@ $.ajax({
 })
 ```
 
-注意到 URL 里开关均未使用`/`

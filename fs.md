@@ -12,8 +12,8 @@ var fs = require('fs-extra'); // 不用再引入 fs 模块！用 fs-extra 代替
 
 ```
 if (!fs.existsSync(dirPath)) {
-        fs.mkdirSync(dirPath);
-    }
+    fs.mkdirSync(dirPath);
+}
 ```
 
 ### fs.readFile -- 读文件内容
@@ -27,12 +27,12 @@ fs.readFile(pathname, 'utf-8', function (err, data) {
     if (err) {
         console.log('oops');
     } else {
-        console.log(data.toString()); // 这里若直接显示 data，则数据为 Buffer 类型，所以用 toString 方法转成字符串
+        console.log(data); // 若省略了 'utf-8'，则为 Buffer 类型，需要用 toString 方法
     }
 });
 ```
 
-同步方式在方法名后加`Sync`，如`fs.readFileSync();`，一般不推荐，毕竟 NodeJS 的特色就是异步。
+同步方式在方法名后加`Sync`，如`fs.readFileSync();`，但一般不推荐。
 
 ### fs.writeFile -- 将数据写入文件
 
@@ -159,8 +159,6 @@ fs.mkdir(dir, function(err){
 });
 ```
 
-虽然像删除文件啊创建目录啊，不需要回调函数（回调函数的内容都是些错误处理、显示 log 之类的）也可以，但程序不完整啊，尽量写！
-
 ### 读取目录
 
 ```
@@ -254,7 +252,7 @@ var dn = __dirname;
 fs.copy(dn + '/src', dn + '/dest', function (err) {
   if (err) return console.error(err)
   console.log('success!')
-}) // copies directory, even if it has subdirectories or files
+})
 ```
 
 ### 写入流 -- createOutputStream
