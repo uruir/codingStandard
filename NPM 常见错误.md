@@ -12,6 +12,6 @@
 
 另外还提及`npm ERR! Windows_NT`等字眼，主要是源有问题，我使用的是`cnpm i`，用官方的`npm i`就可以了，淘宝源也不咱的嘛。
 
-### cannot extract package
+### cannot extract package(node_modules 文件路径过长)
 
 put the deep module to the dependence and use npm dedupe to reduce the path length.

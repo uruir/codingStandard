@@ -1,5 +1,11 @@
 window.trUtil = {
-  // 添加句柄
+  /**
+   * 获取某桌当前未关闭订单
+   * @param {string} restaurantId - 餐厅标识符
+   * @param {string} tableId - 桌号标识符
+   * @param {string} time - 当前时间
+   * @returns {object} - 所有满足当前时间段且未关闭的订单
+   */
   addEvent: function(element, type, handler) {
     if (element.addEventListener) {
       element.addEventListener(type, handler, false);

@@ -182,6 +182,12 @@ git branch -av
 git branch name
 ```
 
+### 重命名本地分支
+
+```
+git branch -m before after
+```
+
 ### 切换到新分支，并更新工作区
 
 ```
@@ -232,6 +238,12 @@ git commit -m "commit message:
 
 ```
 git commit -a
+```
+
+### 简写 git add commit
+
+```
+git commit -am "xxx"
 ```
 
 ### 查看提交日志

@@ -20,31 +20,67 @@ module.exports = {
       console.log(err)
     }
   },
-  info: function (message, content) {
+  green: function (message, content) {
     if (arguments.length === 1) {
       message = message === undefined ? '消息：空' : message
       console.log(message.green)
     } else {
       content = content === undefined ? '消息：空' : content
-      console.log(message.green + ', ' + content.green)
+      console.log(message.green + '：' + content.green)
     }
   },
-  log: function (message, content) {
+  grey: function (message, content) {
     if (arguments.length === 1) {
       message = message === undefined ? '消息：空' : message
-      console.log(message.green)
+      console.log(message.grey)
     } else {
       content = content === undefined ? '消息：空' : content
-      console.log(message.green + ', ' + content.green)
+      console.log(message.grey + '：' + content.grey)
     }
   },
-  warn: function (message, content) {
+  gray: function (message, content) {
+    if (arguments.length === 1) {
+      message = message === undefined ? '消息：空' : message
+      console.log(message.gray)
+    } else {
+      content = content === undefined ? '消息：空' : content
+      console.log(message.gray + '：' + content.gray)
+    }
+  },
+  white: function (message, content) {
+    if (arguments.length === 1) {
+      message = message === undefined ? '消息：空' : message
+      console.log(message.white)
+    } else {
+      content = content === undefined ? '消息：空' : content
+      console.log(message.white + '：' + content.white)
+    }
+  },
+  yellow: function (message, content) {
     if (arguments.length === 1) {
       message = message === undefined ? '警告：空' : message
       console.log(message.yellow)
     } else {
       content = content === undefined ? '警告：空' : content
-      console.log(message.yellow + ', ' + content.yellow)
+      console.log(message.yellow + '：' + content.yellow)
+    }
+  },
+  red: function (message, content) {
+    if (arguments.length === 1) {
+      message = message === undefined ? '警告：空' : message
+      console.log(message.red.bgYellow)
+    } else {
+      content = content === undefined ? '警告：空' : content
+      console.log(message.red.bgYellow + '：' + content.red.bgYellow)
+    }
+  },
+  blue: function (message, content) {
+    if (arguments.length === 1) {
+      message = message === undefined ? '警告：空' : message
+      console.log(message.blue)
+    } else {
+      content = content === undefined ? '警告：空' : content
+      console.log(message.blue + '：' + content.blue)
     }
   },
   /*

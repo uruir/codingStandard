@@ -190,3 +190,30 @@ Ajax的核心是XMLHttpRequest对象，XHR与XML无关，可以传送其它数�
 Comet则是服务器向页面推送数据，有长轮询和流两种方式。
 
 Web Socket：在一个单独持久的连接上提供全双工、双向通信，如QQ。
+
+## 给后台传输 JSON 格式的数据
+
+```
+$.ajax({
+  url: 'generatePDF',
+  type: 'POST',
+  dataType: 'json',
+  contentType: 'application/json; charset=utf-8',
+  beforeSend: function(request) {
+      request.setRequestHeader("token", "tokenValue");
+  },
+  data: JSON.stringify({
+    content: totalPDFContent
+  }),
+  success: function (data) {
+    console.log(data)
+    if (data.statusCode === 200) {
+      window.open('/getPDF/' + data.data.name)
+    }
+  },
+  error: function (err) {
+    notie.alert(err)
+  }
+})
+```
+
