@@ -1,5 +1,6 @@
 .idea
+.git
 .gitignore
-test.js
 node_modules
-
+package.json
+test*

@@ -306,4 +306,3 @@ var p = new Promise(function(resolve, reject){resolve('heh')})
 p.then((val) => console.log('成功:', val))
   .catch((val) => console.log('失败:', val));
 ```
-
