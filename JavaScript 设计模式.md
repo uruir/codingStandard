@@ -4,7 +4,7 @@
 
 产生一个类的唯一实例。
 
-## Object模式
+## Object 模式
 
 ```
 var o1 = {};//字面量的表现形式
@@ -53,6 +53,8 @@ alert(createCar("tom") instanceof Object);//true 判断对象是否 Object 类�
 
 ## 构造器模式
 
+构造函数首字母大写，使用 new 关键字和构造函数来创建一个实例。
+
 ```
 //构造器方法1
 function Car(sColor,iDoors){  //声明为构造器时需要将函数名首字母大写
@@ -84,7 +86,7 @@ alert(new Car("red",2).showColor());//通过构造器创建一个对象并调用
 
 出现的问题就是语义不够清除,体现不出类的封装性,改进为 prototype 模式。
 
-## 通过Function对象创建对象
+## 通过 Function 对象创建对象
 
 ```
 function function_name(param1,param2){alert(param1);}
@@ -98,7 +100,7 @@ var Car2 = new Function("sColor","iDoors",
 alert(new Car2("blue",3).showColor());
 ```
 
-## prototype模式
+## prototype 模式
 
 - 类通过 prototype 属性添加的属性与方法都是绑定在这个类的 prototype 域(实际为一个 Prototype 对象)中，绑定到这个域中的属性与方法只有一个版本，只会创建一次
 - 类的实例对象可以直接像调用自己的属性一样调用该类的 prototype 域中的属性与方法，类可以通过调用 prototype 属性来间接调用prototype 域内的属性与方法

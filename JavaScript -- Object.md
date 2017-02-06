@@ -1,4 +1,12 @@
+- Function
+- Array
+- Date
+- RegExp
+- Error
+
 ## 自定义 on 函数
+
+当将函数和对象合写在一起时，函数就变成了“方法”。
 
 ```
 var doSth = {
