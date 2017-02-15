@@ -6,6 +6,8 @@
 
 ## Object 模式
 
+基本模式。
+
 ```
 var o1 = {};//字面量的表现形式
 var o2 = new Object;
@@ -21,8 +23,10 @@ var o7 = Object.create(null);//创建一个原型为 null 的对象
 
 ## 工厂模式
 
+将创建对象的语句封闭在一个函数里，通过执行该函数创建特定对象。
+
 ```
-//工厂方法1 通过一个方法来创建对象 利用 arguments 对象获取参数设置属性(参数不直观,容易出现问题)
+//工厂方法1 通过一个方法来创建对象，利用 arguments 对象获取参数设置属性(参数不直观,容易出现问题)
 function createCar(){
     var oTemp = new Object();
     oTemp.name = arguments[0];//直接给对象添加属性，每个对象都有直接的属性
@@ -46,14 +50,14 @@ function createCar(name,age){
     };//每个对象都有一个 showName 方法版本
     return oTemp;
 }
-createCar("tom").showName();
+createCar("tom").showName(); // 执行工厂函数创建新对象
 createCar("tim",80).showName();
 alert(createCar("tom") instanceof Object);//true 判断对象是否 Object 类或子类
 ```
 
 ## 构造器模式
 
-构造函数首字母大写，使用 new 关键字和构造函数来创建一个实例。
+构造函数首字母大写，使用 new 关键字和构造函数来创建一个实例。构造函数里并没有创始对象，直接将属性和方法赋值给 `this` 对象，同样没有 `return` 语句。
 
 ```
 //构造器方法1
@@ -84,7 +88,7 @@ function Car(sColor,iDoors){//构造器
 alert(new Car("red",2).showColor());//通过构造器创建一个对象并调用其对象方法
 ```
 
-出现的问题就是语义不够清除,体现不出类的封装性,改进为 prototype 模式。
+出现的问题就是语义不够清除，体现不出类的封装性，且每实例化一个新对象，就创建多个含有相同功能（showDoor）的方法，造成资源浪费，改进为 prototype 模式。
 
 ## 通过 Function 对象创建对象
 

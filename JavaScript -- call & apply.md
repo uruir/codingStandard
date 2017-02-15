@@ -1,5 +1,6 @@
 ECMAScript 3 给 Function 的原型定义了两个方法，他们是`Function.prototype.call`和`Function.prototype.apply`，其实他们的作用是一样的，只是传递的参数不一样而已。
 
+`apply` & `call` 都是为了动态改变 `this` 而出现，将已有的方法应用到新对象上。
 ## apply
 
 两个参数，第一个参数指定了函数体内`this`对象的指向，第二个参数为一个类似数组的集合，比如如下代码：
