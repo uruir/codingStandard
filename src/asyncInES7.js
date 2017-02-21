@@ -25,4 +25,3 @@ var start = async function () {
 
 start()
 
-console.log('heheda')
