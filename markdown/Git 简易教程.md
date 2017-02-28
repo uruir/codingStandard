@@ -554,7 +554,7 @@ git checkout .
 git reset [file]
 ```
 
-### 重置暂存区与工作区，与上一次 commit 保持一致
+### 将工作区和暂存区恢复到最近一次提交
 
 ```
 git reset --hard
