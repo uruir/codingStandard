@@ -38,11 +38,11 @@ Document
 
 上例中`<html>`、`<head>`、`<title>`等都是元素节点（Element），而`Hello World`为文本节点（Text）。
 
-### Node 类型
+### 节点类型
 
 DOM1 级定义了一个 Node 接口，JavaScript 中所有节点类型都继承自 Node 类型，因此所有节点类型都共享着相同的基本属性和方法。
 
-每个节点都有一个 nodeType 属性，用于表明节点的类型。
+每个节点都有一个 nodeType 属性，用于表明节点的类型。几乎所有 HTML 标签都是元素节点。
 
 - 1 - Node.ELEMENT_NODE
 - 2 - Node.ATTRIBUTE_NODE

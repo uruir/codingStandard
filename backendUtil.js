@@ -175,5 +175,8 @@ module.exports = {
       req.connection.remoteAddress ||
       req.socket.remoteAddress ||
       req.connection.socket.remoteAddress;
+  },
+  toJSON: function (json) {
+    return JSON.stringify(json, null, 4)
   }
 }
