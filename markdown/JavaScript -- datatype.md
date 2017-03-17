@@ -1,5 +1,7 @@
 ## 基本数据类型
 
+> 直接修改其值
+
 - Number
 - String
 - Boolean - 值为`true` or `false`

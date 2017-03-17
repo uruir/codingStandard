@@ -528,6 +528,24 @@ git push [remote] --force
 git push [remote] --all
 ```
 
+### 推送到多个远程仓库（在已有一个远程分支的情况下增加其它远程仓库）
+
+```
+git remote set-url --add origin git@git.coding.net:t628/xxx.git
+git push origin --all
+```
+
+打开当前项目文件夹，在 `.git/config` 文件里可以看到
+
+```
+[remote "origin"]
+	url = a.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+	url = b.git
+```
+
+有多个远程仓库，则添加多个 `url` 即可。
+
 ## 撤销
 
 ### 恢复暂存区的指定文件到工作区
