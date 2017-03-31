@@ -21,7 +21,10 @@ ren before.txt after.txt
 mkdir test
 # 删除文件夹：/s 代表递归删除，/q 代表强制删除
 rmdir /s/q FOLDER
-或者简写成：rd /s/q test
+# 或者简写成：
+rd /s/q test
+# 或者
+rm -rf test
 # 查看当前文件夹下文件信息
 dir
 ```
@@ -29,6 +32,8 @@ dir
 ### 服务
 
 ```
+# 升级到管理员
+runas /user:administrator "cmd /k"
 # 开启与关闭休眠
 powercfg -h on/off
 ```

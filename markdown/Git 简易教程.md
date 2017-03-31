@@ -314,6 +314,7 @@ git checkout <SHA> // 将 HEAD 指针移动 <SHA> 对应的版本，类似于 OS
 git pull origin master
 git rm -r --cached folder // 删除目录
 git rm --cached filename // 删除文件
+modify .gitignore
 ```
 
 ## 将文件从暂存区（staging area）撤回
@@ -594,6 +595,17 @@ git reset --hard [commit]
 
 ```
 git reset --keep [commit]
+```
+
+## .gitignore
+
+- `.gitignore_global` macOS 每个目录下都有 .DS_Store 文件夹，需要忽略。该文件位于用户目录下，同目录下的 .gitconfig 已经引用了该文件。可通过 git config --global core.excludesfile .gitingore_global 添加。
+- `.git/info/exclude` 每个项目都有自己的忽略文件。
+
+### 忽略已跟踪的文件
+
+```
+git update-index --assume-unchanged file.name
 ```
 
 ## 其他

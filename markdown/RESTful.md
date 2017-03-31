@@ -56,5 +56,9 @@ Web service 是一个平台独立的、低耦合的、自包含的、基于可�
 
 RESTful Web 服务通常可以通过自动客户端或代表用户的应用程序访问。但是，这种服务的简便性让用户能够与之直接交互，使用它们的 Web浏览器构建一个 GET URL 并读取返回的内容。
 
+## 常用 API 服务
+
+- 回答 [yes or no](https://yesno.wtf/api) 的网站
+
 [查看更多](http://www.runoob.com/w3cnote/restful-architecture.html)
 

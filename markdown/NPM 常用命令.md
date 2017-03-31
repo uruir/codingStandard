@@ -67,6 +67,16 @@ npm search packageName
 
 ```
 set NODE_ENV=production // 设置当前环境为生产环境
+registry=https://registry.npm.taobao.org/
+sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
+phantomjs_cdnurl=http://npm.taobao.org/mirrors/phantomjs
+ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/
+```
+
+## 清理缓存
+
+```
+npm cache clean
 ```
 
 ## 发布包
