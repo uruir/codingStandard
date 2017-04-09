@@ -606,6 +606,7 @@ git reset --keep [commit]
 
 ```
 git update-index --assume-unchanged file.name
+git update-index --no-assume-unchanged file.name // 重新跟踪
 ```
 
 ## 其他
