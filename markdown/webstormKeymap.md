@@ -1,5 +1,23 @@
+## 面板
+
 |key|comments|
 |:---:|:---:|
-|Alt + F12|终端|
-|Cmd + 1|文件面板|
-|Cmd + 9|版本控制|
+|option + F12|终端|
+|command + 1|文件面板|
+|command + 6|Todo 面板|
+|command + 7|Structure 面板|
+|command + 9|版本控制|
+
+## 光标
+
+|key|comments|
+|:---:|:---:|
+|option + 左右键|按 word 移动光标|
+|command + 左右键|光标移动到行首行尾|
+
+## 行编辑
+
+|key|comments|
+|:---:|:---:|
+|shift + option + 上下键|上下移动整行|
+|command + D|复制行|
