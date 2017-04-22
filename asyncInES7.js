@@ -15,8 +15,8 @@ var start = async function () {
     console.log(result)
     console.log('end')
     for (var i = 1; i <= 3; i++) {
-      console.log(`${result} - 当前是第 ${i} 次等待...`);
-      await sleep(1000);
+        await sleep(1000);
+        console.log(`${result} - 第 ${i} 次等待...`);
     }
   } catch (err) {
     console.log(err)
