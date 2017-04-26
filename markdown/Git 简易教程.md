@@ -599,6 +599,8 @@ git reset --keep [commit]
 
 ## .gitignore
 
+只对未加入版本跟踪的文件有效。
+
 - `.gitignore_global` macOS 每个目录下都有 .DS_Store 文件夹，需要忽略。该文件位于用户目录下，同目录下的 .gitconfig 已经引用了该文件。可通过 git config --global core.excludesfile .gitingore_global 添加。
 - `.git/info/exclude` 每个项目都有自己的忽略文件。
 

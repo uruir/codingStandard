@@ -18,7 +18,7 @@ gulp.task('babelify', function () {
         })
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'babelify']);
 
 gulp.task('watch', function () {
     return gulp.watch(['*.js'], ['babelify']);

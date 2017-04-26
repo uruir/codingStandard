@@ -8,7 +8,12 @@
 
 ## let, const
 
-用`let`声明的变量拥有块级作用域；`const`用于声明常量。
+用 `let` 声明的变量拥有块级作用域，不会进行变量提升；`const` 用于声明常量（函数应当是常量），全局环境下优先使用。
+
+```
+const arr = [1, 3, 5, 7]
+const [a, b, c] = arr
+```
 
 ## class, extends, super
 
