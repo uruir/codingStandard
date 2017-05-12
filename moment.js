@@ -28,4 +28,6 @@ util.gray('7 小时后', moment().add(7, 'hours').format('HH:mm:ss'))
 
 util.gray('明天', moment().add(1, 'days').calendar())
 
-util.gray('test:', moment(1111111111111).format('MM/DD/YYYY'))
+util.gray('timestamp to date:', moment(1471224865000).format('MM/DD/YYYY'))
+
+util.gray('timestamp in milliseconds', moment("03252015", "MMDDYYYY").format('x'))

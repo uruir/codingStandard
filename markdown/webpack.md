@@ -1,7 +1,9 @@
-> 为什么用 webpack
+## 为什么用 webpack
 
-- 将多个 CSS/JS 等资源打包进一个文件里，减少请求数。可以替代 browserify/gulp
-- 可以使用诸如 .vue 的文件，前端编码更灵活
+模块加载器兼打包工具。
+
+- 将多个 CSS/JS 等资源打包进一个文件里，减少请求数
+- 可以使用后缀诸如 .vue/.less 的文件，前端编码更灵活
 - 原生支持 AMD/CommonJS 模块体系
 
 通过 `webpack-dev-server --progress --colors` 实时更新页面调试。
@@ -180,4 +182,16 @@ body {
 
 [点击原文查看更多](http://zhuanlan.zhihu.com/FrontendMagazine/20367175)
 
+## webpack配置注意事项
 
+webpack配置需要注意的一点是，需要配置target为electron。
+
+如果不这么配置的话，webpack默认会编译为浏览器运行用的js。
+
+而如果你在js中require(‘fs’)了，webpack会提示你找不到fs模块。
+
+而如果设置了目标为electron，因为electron运行页面中的js调用Node.js的包，所以webpack在遇到这种情况时，就忽略了。
+
+以上证实不可用！！！什么鬼啊，官方也说是配置 `target` 啊。
+
+`require('script!path)` 可用！！！

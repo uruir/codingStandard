@@ -1,9 +1,9 @@
 var fonts = {
   Roboto: {
-    normal: './node_modules/pdfmake/src/fonts/msyh.ttf',
-    bold: './node_modules/pdfmake/src/fonts/msyh.ttf',
-    italics: './node_modules/pdfmake/src/fonts/msyh.ttf',
-    bolditalics: './node_modules/pdfmake/src/fonts/msyh.ttf'
+    normal: './public/font/msyh.ttf',
+    bold: './public/font/msyh.ttf',
+    italics: './public/font/msyh.ttf',
+    bolditalics: './public/font/msyh.ttf'
   }
 };
 

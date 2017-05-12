@@ -2,6 +2,7 @@
 
 |key|comments|
 |:---:|:---:|
+|command + e|显示面板选项及最近打开的文件|
 |option + F12|终端|
 |command + 1|文件面板|
 |command + 6|Todo 面板|
@@ -21,3 +22,10 @@
 |:---:|:---:|
 |shift + option + 上下键|上下移动整行|
 |command + D|复制行|
+
+## 搜索
+
+|key|comments|
+|:---:|:---:|
+|command + shift + o|搜索文件|
+|||
