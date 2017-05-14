@@ -17,7 +17,7 @@ git remote add origin git@github.com:uruir/project.git
 
 Q: error: Your local changes to the following files would be overwritten by merge
 
-A: 说明合并的时候，本地代码还有未提交的，如果合并了，本地修改的代码就要被覆盖了。所以直接`git commit`本地修改，再`git pull`
+A: 说明合并的时候，本地代码还有未提交的，如果合并了，本地修改的代码就要被覆盖了。所以直接 `git commit` 本地修改，再 `git pull`
 
 ---
 
@@ -47,21 +47,18 @@ git push
 
 这里参数`--cached`指把要删除的代码从版本库移除，但不从本地移除，即代码还在，只是不上传了而已。
 
-用过 Linux 的应该知道`-r`是指扫描`folder`下面所有文件与子目录。
-
----
-
-Q: HEAD detached from <SHA>
-A: 
+用过 Linux 的应该知道 `-r` 是指扫描 `folder` 下面所有文件与子目录。
 
 ---
 
 Q: nothing to commit, working directory clean
-A: 查看`.gitignore`文件是不是添加了修改的文件，这样修改就不会被 git 跟踪，所以提示工作仓库干净。
+
+A: 查看 `.gitignore` 文件是不是添加了修改的文件，这样修改就不会被 git 跟踪，所以提示工作仓库干净。
 
 ---
 
 Q: error: RPC failed; result=22, HTTP code = 411
+
 A: 上传包过大，修改之：`git config --global http.postBuffer 52428800`
 
 ---

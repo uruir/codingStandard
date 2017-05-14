@@ -3,21 +3,19 @@
 模块加载器兼打包工具。
 
 - 将多个 CSS/JS 等资源打包进一个文件里，减少请求数
-- 可以使用后缀诸如 .vue/.less 的文件，前端编码更灵活
+- 使用 loader 解析多种类型文件，前端编码更灵活
 - 原生支持 AMD/CommonJS 模块体系
 
 通过 `webpack-dev-server --progress --colors` 实时更新页面调试。
 
+> webpack@1.x.x
+
 ## 配置文件里的模块
 
 ```
-//node的路径模块
 var path=require('path');
-//我们是webpack当然要引入这个
 var webpack = require('webpack');
-//这个是构建页面资源的插件
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-//因为我们是vue.js的应用，把各个组件当做一个页面.vue后缀，所以引入这个可以编译這些文件
 var vue = require("vue-loader");
 ```
 
@@ -42,20 +40,22 @@ module.exports = {
 };
 ```
 
-`entry`是项目的入口文件，`output`是 webpack 处理完后的文件存放位置，`module`里的`loaders`是处理某种静态资源时所用到的模块。
+`entry` 是项目的入口文件
+
+`output` 是 webpack 处理完后的文件存放位置，`module` 里的 `loaders` 是处理某种静态资源时所用到的模块。
 
 webpack 提供了强大的 loader 机制和 plugin 机制，loader 机制支持载入各种各样的静态资源，不只是 js 脚本、连 html, css, images 等各种资源都有相应的 loader 来做依赖管理和打包；而 plugin 则可以对整个 webpack 的流程进行一定的控制。
 
-比如在安装并配置了 css-loader 和 style-loader 之后，就可以通过 require('./bootstrap.css') 这样的方式给网页载入一份样式表，这比`RequireJS`这类前端模块管理器只能加载`js`文件强大许多。
+比如在安装并配置了 css-loader 和 style-loader 之后，就可以通过 require('./bootstrap.css') 这样的方式给网页载入一份样式表，这比 RequireJS 这类前端模块管理器只能加载 js 文件强大许多。
 
-`loaders`里，`test`指匹配的文件类型；`loader`是处理该类型文件所使用的库，`style!css`表示先用`css-loader`处理，再用`style-loader`处理。
+`loaders` 里，`test` 指匹配的文件类型；`loader` 是处理该类型文件所使用的库，`style!css` 表示先用 `css-loader` 处理，再用 `style-loader` 处理。
 
-webpack 背后的原理其实就是把所有的非 js 资源都转换成 js (如把一个 css 文件转换成“创建一个 style 标签并把它插入 document”的脚本、把图片转换成一个图片地址的 js 变量或 base64 编码等)，然后用 CommonJS 的机制管理起来。
+webpack 背后的原理其实就是把所有的非 js 资源都转换成 js (如把一个 css 文件转换成“创建一个 style 标签并把它插入 document 的脚本、把图片转换成一个图片地址的 js 变量或 base64 编码等)，然后用 CommonJS 的机制管理起来。
 
 ## 安装
 
 ```
-cnpm install -g webpack
+npm install -g webpack
 ```
 
 ## 建立项目
@@ -111,7 +111,6 @@ npm install webpack-dev-server --save-dev
 ```
 var path = require('path');
 var htmlWebpackPlugin = require('html-webpack-plugin');
-// 定义了一些文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'app');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
@@ -184,14 +183,8 @@ body {
 
 ## webpack配置注意事项
 
-webpack配置需要注意的一点是，需要配置target为electron。
+webpack 配置需要注意的一点是，需要配置 target 为 node。
 
-如果不这么配置的话，webpack默认会编译为浏览器运行用的js。
+如果不这么配置的话，webpack 默认会编译为浏览器运行用的 js。
 
-而如果你在js中require(‘fs’)了，webpack会提示你找不到fs模块。
-
-而如果设置了目标为electron，因为electron运行页面中的js调用Node.js的包，所以webpack在遇到这种情况时，就忽略了。
-
-以上证实不可用！！！什么鬼啊，官方也说是配置 `target` 啊。
-
-`require('script!path)` 可用！！！
+而如果你在 j s中require(‘fs’)了，webpack 会提示你找不到 fs 模块。

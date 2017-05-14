@@ -62,5 +62,5 @@ HTML精确定位：scrollLeft, scrollWidth, clientWidth, offsetWidth
 
 `clientWidth` & `clientHeight`也不包含滚动条。
 
-那意思是只有`offset`即含边框又含滚动条咯？
+那意思是只有 `offset` 即含边框又含滚动条咯？
 
