@@ -11,13 +11,17 @@ var sleep = function (time) {
 var start = async function () {
   try {
     console.log('start')
-    var result = await sleep(2000)
-    console.log(result)
-    console.log('end')
-    for (var i = 1; i <= 3; i++) {
-        await sleep(1000);
-        console.log(`${result} - 第 ${i} 次等待...`);
+    let stop = false
+    let i = 1
+    while (!stop) {
+      var result = await sleep(1000)
+      await sleep(1000);
+      console.log(`${result} - 第 ${i} 次等待...`);
+      if (i++ > 5) {
+        stop = true
+      }
     }
+    console.log('end')
   } catch (err) {
     console.log(err)
   }

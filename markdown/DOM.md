@@ -146,3 +146,12 @@ var returnNode = someNode.replaceChild(newNode, someNode.firstChild);
   <dd>第三方配送</dd>
 </dl>
 ```
+
+### document
+
+- document.images
+- document.links
+- document.forms
+- document.forms[0].elements
+
+这些方法和属性返回HTMLCollection对象，是一种类似数组（无push()/slice()等方法，但有length属性）的列表。HTML集合实际上在查询文档，当更新信息时，每次都要重复执行这种查询操作。通常遍历一个集合前，将之转换成数组。

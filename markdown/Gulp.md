@@ -1,12 +1,12 @@
 ## 使命
 
-优化前端工作流程，比如自动刷新页面、压缩CSS与JS、编译SCSS等。
+优化前端工作流程，比如自动刷新页面、压缩 CSS 与 JS、编译 SCSS 等。
 
 理念：代码优于配置（Grunt要写很多配置内容）。
 
 基于 Node stream 构建任务，每个任务单独运行，避免反复 I/O 操作。核心只有 4 个 API：`gulp.src/dest/task/watch`。
 
-## 安装Gulp
+## 安装 Gulp
 
 全局安装：`sudo npm install gulp -g`
 

@@ -8,11 +8,11 @@
 ## 常用 Plugins 介绍
 
 - 代码热替换, HotModuleReplacementPlugin
-- 生成html文件，HtmlWebpackPlugin
-- 将css成生文件，而非内联，ExtractTextPlugin
-- 报错但不退出webpack进程，NoErrorsPlugin
+- 生成 html 文件，HtmlWebpackPlugin
+- 将 css 生成文件，而非内联，ExtractTextPlugin
+- 报错但不退出 webpack 进程，NoErrorsPlugin
 - 代码丑化，UglifyJsPlugin，开发过程中不建议打开
-- 多个 html共用一个js文件(chunk)，可用CommonsChunkPlugin
+- 多个 html 共用一个 js 文件(chunk)，CommonsChunkPlugin
 - 清理文件夹，Clean
-- 调用模块的别名ProvidePlugin，例如想在js中用$，如果通过webpack加载，需要将$与jQuery对应起来
+- 调用模块的别名 ProvidePlugin，例如想在 js 中用$，如果通过 webpack 加载，需要将 $ 与 jQuery 对应起来
 

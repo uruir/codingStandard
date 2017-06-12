@@ -3,7 +3,7 @@ var Schema = mongoose.Schema
 var ObjectId = Schema.Types.ObjectId
 require('mongoose-long')(mongoose)
 mongoose.Promise = require('promise')
-var util = require('../public/libs/javascripts/backendUtil')
+var util = require('./backendUtil')
 
 mongoose.connect("mongodb://localhost/hehe")
 

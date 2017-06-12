@@ -1,13 +1,13 @@
 var fonts = {
   Roboto: {
-    normal: './public/font/msyh.ttf',
-    bold: './public/font/msyh.ttf',
-    italics: './public/font/msyh.ttf',
-    bolditalics: './public/font/msyh.ttf'
+    normal: '../public/font/msyh.ttf',
+    bold: '../public/font/msyh.ttf',
+    italics: '../public/font/msyh.ttf',
+    bolditalics: '../public/font/msyh.ttf'
   }
 };
 
-var PdfPrinter = require('./node_modules/pdfmake/src/printer');
+var PdfPrinter = require('../node_modules/pdfmake/src/printer');
 var printer = new PdfPrinter(fonts);
 var fs = require('fs');
 
@@ -52,5 +52,5 @@ var docDefinition = {
 };
 
 var pdfDoc = printer.createPdfKitDocument(docDefinition);
-pdfDoc.pipe(fs.createWriteStream('./test/tables.pdf'));
+pdfDoc.pipe(fs.createWriteStream('./tables.pdf'));
 pdfDoc.end();

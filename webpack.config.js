@@ -13,16 +13,22 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.js$/, loader: 'babel', exclude: /node_modules/},
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        exclude: /node_modules/,
+        options: {
+          babel: {
+            presets: ['es2015'],
+            plugins: ['transform-runtime'],
+          }
+        }
+      },
       {test: /\.css$/, loader: 'style!css!autoprefixer'},
       {test: /\.scss$/, loader: 'style!css!sass?sourceMap'},
       {test: /\.(html|tpl)$/, loader: 'html-loader'},
       {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'},
     ],
-  },
-  babel: {
-    presets: ['es2015'],
-    plugins: ['transform-runtime'],
   },
   resolve: {
     alias: {
