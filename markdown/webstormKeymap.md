@@ -8,6 +8,7 @@
 |command + 6|Todo 面板|
 |command + 7|Structure 面板|
 |command + 9|版本控制|
+|command + up|面包屑导航|
 
 ## 光标
 
@@ -29,3 +30,9 @@
 |:---:|:---:|
 |command + shift + o|搜索文件|
 |||
+
+## 跳转
+
+|key|comments|
+|:---:|:---:|
+|command + b|跳转到变量声明处|
