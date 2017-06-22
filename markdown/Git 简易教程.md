@@ -116,6 +116,17 @@ origin 是 github 官网上的同名项目，master 是本地默认分支，所�
 git push origin --delete <branchName>
 ```
 
+### 回滚远程分支到某个 commit
+
+先将本地回滚到该 commit。
+
+```
+git push origin :theBranch
+git push orign theBranch
+```
+
+加 `:` 是删除该远程分支，然后将本地分支推送到远程。
+
 ### 删除 remotes/rui/rui
 
 ```
