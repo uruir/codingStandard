@@ -22,12 +22,13 @@ util.gray('毫秒', moment().format('x'))
 
 util.gray('相对时间', moment('20160524', 'YYYYMMDD').fromNow())
 
-util.gray('7 天后', moment().add(7, 'days').format('YYYY 年 MM 月 DD 日'))
+util.gray('40 天后', moment('20170609').add(40, 'days').format('YYYY 年 MM 月 DD 日'))
 
 util.gray('7 小时后', moment().add(7, 'hours').format('HH:mm:ss'))
 
 util.gray('明天', moment().add(1, 'days').calendar())
 
-util.gray('timestamp to date:', moment(1471224865000).format('MM/DD/YYYY'))
+util.gray('时间戳转日期：', moment(1471224865000).format('MM/DD/YYYY'))
 
-util.gray('timestamp in milliseconds', moment("03252015", "MMDDYYYY").format('x'))
+util.gray('日期转时间戳：', moment("07192017-00:00:00", "MMDDYYYY-HH:mm:ss").format('X'))
+

@@ -1,9 +1,41 @@
 {
-    "posts": [
-        { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-        { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
+    "getIMList": {
+        "retcode": 1,
+        "info": "成功",
+        "data": {
+            "count": 3,
+            "list": [
+                {
+                    "nop_type": "1",
+                    "str_username": "tr",
+                    "str_password": "123",
+                    "str_nickname": "23",
+                    "str_from_username": "sdgfxdc",
+                    "str_from_nickname": "xcv",
+                    "str_to_username": "xcv",
+                    "str_to_nickname": "123",
+                    "str_content": "xcvwergerww",
+                    "str_friend_list": "123",
+                    "str_group": "thresethw",
+                    "str_group_member": "123",
+                    "str_group_num": "jte"
+                },
+                {
+                    "nop_type": "2",
+                    "str_username": "abc",
+                    "str_password": "123",
+                    "str_nickname": "123",
+                    "str_from_username": "mnetjnwj",
+                    "str_from_nickname": "123",
+                    "str_to_username": "wergj",
+                    "str_to_nickname": "123",
+                    "str_content": "12mrytum3",
+                    "str_friend_list": "123",
+                    "str_group": "123",
+                    "str_group_member": "ryeke",
+                    "str_group_num": "tyket"
+                }
+            ]
+        }
+    }
 }

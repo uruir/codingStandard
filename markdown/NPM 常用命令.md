@@ -49,6 +49,12 @@ npm config get cache
 
 通过`npm cache ls react`查看包路径。
 
+## 查看全局安装包所在文件夹
+
+```
+npm root -g
+```
+
 ## 查看当前全局安装的包
 
 ```
