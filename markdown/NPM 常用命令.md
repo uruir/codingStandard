@@ -33,13 +33,13 @@ npm show <name>
 其中：
 
 ```
-dist: { 
+dist: {
   shasum: 'b90c718b917180f2285a8f6548a390ca43c7736c',
-  tarball: 'http://registry.npmjs.org/itachi/-/itachi-0.0.3.tgz' 
+  tarball: 'http://registry.npmjs.org/itachi/-/itachi-0.0.3.tgz'
 }
 ```
 
-中的`tarball`即是该版本压缩包的网址。
+的`tarball`即是该版本压缩包的网址。
 
 ## 缓存文件夹
 
@@ -63,6 +63,12 @@ npm ls -g
 
 同样的，不使用`-g`参数表查看当前目录下安装了哪些第三方包。
 
+```
+npm ls node-sass
+```
+
+查看当前目录下包版本。
+
 ## 搜索包
 
 ```
@@ -79,10 +85,22 @@ phantomjs_cdnurl=http://npm.taobao.org/mirrors/phantomjs
 ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/
 ```
 
+## 设置 npm 仓库
+
+```
+npm config set registry https://registry.npm.taobao.org
+```
+
 ## 清理缓存
 
 ```
 npm cache clean
+```
+
+## 重新编译
+
+```
+npm rebuild package_name
 ```
 
 ## 发布包
@@ -99,4 +117,3 @@ npm unpublish <package>@<version> // 撤销自己发布的某版本代码
 npm set process=false
 time npm install
 ```
-
