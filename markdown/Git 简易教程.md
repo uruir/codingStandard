@@ -1,8 +1,8 @@
 title: Git简易教程
 date: 2014-01-17 20:14:29
-categories: 
+categories:
 - 编程工具
-tags: 
+tags:
 - 教程
 - Git
 description: Git的简介，也持续更新～
@@ -108,7 +108,7 @@ git mv [file-original] [file-renamed]
 git remote add origin https://github.com/yourname/yourProject
 ```
 
-origin 是 github 官网上的同名项目，master 是本地默认分支，所以在提交前就在 github 官网创建同名仓库。 
+origin 是 github 官网上的同名项目，master 是本地默认分支，所以在提交前就在 github 官网创建同名仓库。
 
 ### 删除远程分支
 
@@ -496,6 +496,14 @@ git reflog
 
 ```
 git fetch [remote]
+```
+
+### 删除远程文件
+
+```
+git rm --cached filename
+git commit -am "rm filename"
+git push
 ```
 
 ### 显示所有远程仓库

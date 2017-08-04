@@ -59,6 +59,34 @@ alert(createCar("tom") instanceof Object);//true 判断对象是否 Object 类�
 
 构造函数首字母大写，使用 new 关键字和构造函数来创建一个实例。构造函数里并没有创始对象，直接将属性和方法赋值给 `this` 对象，同样没有 `return` 语句。
 
+### 创建对象属性的方式
+
+```
+var o = {}
+o.name = 'turui'
+o['sex'] = 'male'
+Object.defineProperty(o, 'age', {
+  value: 28,
+  writable: true,
+  enumerable: true,
+  configurable: true
+})
+```
+
+### 带原型的构造器
+
+```
+function Car(model, year, miles) {
+  this.model = model
+  this.year = year
+  this.miles = miles
+
+  Car.prototype.toString = function() {
+    return this.model + ' has done ' + this.miles + ' miles.'
+  }
+}
+```
+
 ```
 //构造器方法1
 function Car(sColor,iDoors){  //声明为构造器时需要将函数名首字母大写
@@ -302,3 +330,180 @@ log('p1.say: ' + p1.say() + ' | p2.say: ' + p2.say()); //p1.say: a | p2.say: b
 ## 代理模式
 
 将部分功能提取出来，实现功能分层。
+
+## 模块模式--Module
+
+```
+var m = (function() {
+  var privateVar = 0
+  var privateMethod = function(v) {
+    console.log(privateVar + ': ' + v)
+  }
+  return {
+    publicNum : privateVar,
+    publicFunc : function(v) {
+      console.log(privateVar++)
+      privateMethod(v)
+    }
+  }
+})()
+```
+
+先定义私有变量和方法，再返回一个拥有公有 API 对象，在公有方法里操作私有变量和方法。
+
+## 揭示模块模式--Revealing Module
+
+```
+var myRevealingModule = (function() {
+  var privateCount = 0
+  function privateFunc() {
+    privateCount++
+  }
+  function publicInc() {
+    privateFunc()
+  }
+  function publicFunc() {
+    publicInc()
+  }
+  function publicGetCount() {
+    return privateCount
+  }
+  return {
+    start: publicFunc,
+    incre: publicInc,
+    count: publicGetCount
+  }
+})()
+```
+
+对模块模式的改进，然而我并没看到有啥区别。
+
+## 单例模式--Singleton
+
+限制了类的实例化只能一次。如果实例不存在，通过一个方法创建一个类实现创建类的新实例；如果实例存在，返回该对象的引用。
+
+```
+var mySingleton = (function() {
+  var instance
+  function init() {
+    function privateMethod() {
+      console.log('I am private')
+    }
+    var privateVar = 'I am alse private'
+    var privateRandom = Math.random()
+    return {
+      publicMethod: function() {
+        console.log('The public can see me.')
+      },
+      publicProperty: 'I am alse public',
+      getRandom: function() {
+        return privateRandom
+      }
+    }
+  }
+  return {
+    getInstance: function() {
+      if (!instance) {
+        instance = init()
+      }
+      return instance
+    }
+  }
+})()
+```
+
+## 观察者模式--Observer && 发布/订阅模式--Publish/Subscribe
+
+一个称为 subject 的对象维持一系列依赖于它的对象，将有关状态的任何变更自动通知给它们。
+
+它是由两类对象组成，主题和观察者，主题负责发布事件，同时观察者通过订阅这些事件来观察该主体，发布者和订阅者是完全解耦的，彼此不知道对方的存在，两者仅仅共享一个自定义事件的名称。
+
+```
+function PubSub() {
+  this.handlers = {};
+}
+PubSub.prototype = {
+  // 订阅事件
+  on: function(eventType,handler) {
+    var self = this;
+    if (!(eventType in self.handlers)) {
+      self.handlers[eventType] = [];
+    }
+    self.handlers[eventType].push(handler);
+    return this;
+  },
+  // 触发事件
+  emit: function(eventType){
+    var self = this;
+    var handlerArgs = Array.prototype.slice.call(arguments,1);
+    for(var i = 0; i < self.handlers[eventType].length; i++) {
+      self.handlers[eventType][i].apply(self,handlerArgs);
+    }
+    return self;
+  }
+};
+
+// 调用方式如下：
+var pubsub = new PubSub();
+pubsub.on('A',function(data){
+  console.log(1 + data);  // 执行第一个回调业务函数
+});
+pubsub.on('A',function(data){
+  console.log(2 + data); // 执行第二个业务回调函数
+});
+// 触发事件A
+pubsub.emit('A',"我是参数");
+```
+
+## 中介者模式--Mediator
+
+```
+var meiator = (function() {
+  var topics = {}
+  var subscribe = function(topic, fn) {
+    if (!topics[topic]) {
+      topics[topic] = []
+    }
+    topics[topic].push({context: this, callback: fn})
+    return this
+  }
+  var publish = function(topic) {
+    var args
+    if (!topics[topic]) {
+      return false
+    }
+    args = Array.prototype.slice.call(arguments, 1)
+    for (var i = 0, len = topics[topic].length; i < len; i++) {
+      var subscription = topics[topic][i]
+      subscription.callback.apply(subscription.context, args)
+    }
+    return this
+  }
+  return {
+    Publish: publish,
+    Subscribe: subscribe,
+    installTo: function(obj) {
+      obj.subscribe = subscribe
+      obj.publish = publish
+    }
+  }
+})()
+```
+
+## 原型模式--Prototype
+
+## 命令模式--Command
+
+## 外观模式--Facade
+
+为更大的代码体提供一个方便的高层次接口，能够隐藏其底层的真实复杂性，是一种结构型模式，在 jQuery 等 JavaScript 库中使用频繁。
+
+## 工厂模式--Factory
+
+是一种创建型模式，涉及创建对象的概念。其分类不同于其它模式的地方在于它不显式地要求使用一个构造函数。Factory 可以提供一个通用的接口来创建对象，我们可以指定我们所希望创建的工厂对象的类型。ExtJS 用得多。
+
+## Mixin 模式
+
+## MVC
+
+是一种架构设计模式，它通过关注点分离鼓励改进应用程序组织。
