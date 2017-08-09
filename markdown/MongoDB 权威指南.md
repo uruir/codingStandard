@@ -250,3 +250,222 @@ db.users.update({"birthday": '1/1/2000'}, {$set: {'gift': 'cake'}}, false, true)
 
 ## 第 4 章 -- 查询
 
+# Mongoose 基本操作
+
+## Mongoose 是 MongoDB 的 ODM(Object Document Mapper)
+
+> - 什么是 ODM? 其实和 ORM(Object Relational Mapper)是同类型的工具。都是将数据库的数据转化为代码对象的库，使用转化后的对象可以直接对数据库的数据进行 CRUD(增删改查)。
+> - MongoDB 是文档型数据库(Document Database)，不是关系型数据库(Relational Database)。而 Mongoose 可以将 MongonDB 数据库存储的文档(documents)转化为 javascript 对象，然后可以直接进行数据的增删改查。
+
+查：
+
+```
+// 如果不提供回调函数，所有这些方法都返回 Query 对象，它们都可以被再次修改（比如增加选项、键等），直到调用 exec 方法。
+var query = Model.find({});
+query.where('field', 5);
+query.limit(5);
+query.skip(100);
+query.exec(function (err, docs) {
+  // called when the `query.complete` or `query.error` are called
+});
+```
+
+删：
+
+```
+Model.remove({author: 'uRuier'}, callback)
+// not executed
+var query = Model.find().remove({ name: 'Anne Murray' })
+// executed without a callback
+query.exec()
+
+Model.remove(conditions, callback)
+```
+
+改：
+
+```
+Model.where({ _id: id }).update({ $set: { title: 'words' }}).exec()
+
+MyModel.update({
+  _id: '52261c53daa9d6b74e00000c',
+  someAdditionalFlag: 156
+}, {
+  $set: {someAdditionalFlag: newValue }
+}, function(err, numAffected) {
+})
+
+var conditions = { name: 'borne' }
+  , update = { $inc: { visits: 1 }}
+  , options = { multi: true };
+
+Model.update(conditions, update, options, callback)
+
+// 为了向后兼容，所有顶级更新键如果不是原子操作命名的，会统一被按 $set 操作处理，例如：
+var query = { name: 'borne' };
+Model.update(query, { name: 'jason borne' }, options, callback)
+// 会被这样发送到数据库服务器
+Model.update(query, { $set: { name: 'jason borne' }}, options, callback)
+```
+
+查：
+
+```
+Model.count(conditions, callback)
+
+关联查询子表
+Model.findOne().populate('author').exec(function(err, doc) {
+  log(doc.author.name) // uRuier
+  log(doc.depopulate('author'))
+  log(doc.author) // '5144cf8050f071d979c118a7'
+  // 两面两步可合并为一步
+  log(doc.populated('author')) // '5144cf8050f071d979c118a7'
+})
+
+Kitten.findOne().populate('owner').exec(function (err, kitten) {
+  console.log(kitten.owner.name) // Max
+})
+
+Kitten.find().populate({
+    path: 'owner'
+  , select: 'name'
+  , match: { color: 'black' }
+  , options: { sort: { name: -1 }}
+}).exec(function (err, kittens) {
+  console.log(kittens[0].owner.name) // Zoopa
+})
+
+// alternatively
+Kitten.find().populate('owner', 'name', null, {sort: { name: -1 }}).exec(function (err, kittens) {
+  console.log(kittens[0].owner.name) // Zoopa
+})
+
+某字段是否在当前查询操作中
+Thing.findOne().select('name').exec(function(err, doc) {
+  doc.isSelected('name') // true
+  doc.isSelected('age') // false
+})
+
+query.findOneAndUpdate(conditions, options, callback)
+query.findOneAndUpdate(conditions, update, options, callback)
+
+User.find({age: {$gte: 21, $lte: 65}}, callback)
+User
+  .where('age').gte(21).lte(65)
+  .where('name', /^rui/i)
+  .where('tags').in(['movie', 'music', 'art'])
+  .where('friends').slice(10)
+  .select('name', 'age', 'tags')
+  .skip(20)
+  .limit(10)
+  .asc('age')
+  .slaveOk()
+  .hint({ age: 1, name: 1 })
+  .exec(callback)
+
+// executes immediately, passing results to callback
+MyModel.find({ name: 'john', age: { $gte: 18 }}, function (err, docs) {});
+
+// name LIKE john and only selecting the "name" and "friends" fields, executing immediately
+MyModel.find({ name: /john/i }, 'name friends', function (err, docs) { })
+
+// passing options and executing immediately
+MyModel.find({ name: /john/i }, null, { skip: 10 }, function (err, docs) {});
+// executing a query explicitly
+var query = MyModel.find({ name: /john/i }, null, { skip: 10 })
+query.exec(function (err, docs) {});
+
+// select only the adventures name and length
+Adventure.findById(id, 'name length', function (err, adventure) {});
+// same as above
+Adventure.findById(id, 'name length').exec(callback);
+// include all properties except for `length`
+Adventure.findById(id, '-length').exec(function (err, adventure) {});
+
+A.findByIdAndRemove(id, options, callback) // executes
+A.findByIdAndRemove(id, options)  // return Query
+
+A.findByIdAndUpdate(id, update, options, callback) // executes
+A.findByIdAndUpdate(id, update, options)  // returns Query
+A.findByIdAndUpdate(id, update, callback) // executes
+A.findByIdAndUpdate(id, update)           // returns Query
+Model.findByIdAndUpdate(id, { $set: { name: 'jason borne' }}, options, callback)
+Model.findById(id, function (err, doc) {
+  if (err) ..
+  doc.name = 'jason borne';
+  doc.save(callback);
+});
+
+// 文档嵌套查询
+drawApply = new Schema({
+    salesId: { type: Schema.ObjectId, ref: 'sales' },
+    money: Number,
+    status: { type: Number, default: 0 },
+    createTime: { type: Date, default: Date.now }
+});
+sales = new Schema({
+    name: { type: String, required: true, unique: true },
+    pwd: String,
+    phone: String,
+    merchant: { type: Schema.ObjectId, ref: 'merchant' },
+    status: { type: Number, default: 0 }
+});
+merchant = new Schema({
+    name: String,
+    sname: String,
+    type: String
+});
+// 可以使用多个 populate 链式查询
+drawApply
+  .find()
+  .populate({
+    path: 'salesId',
+    select: '_id name phone merchant',
+    model: 'sales',
+    populate: {
+      path: 'merchant',
+      select: '_id sname',
+      model: 'merchant'
+    }
+  })
+  .sort({createTime: -1})
+  .exec(function(err, list) {
+  // list of drawApplies with salesIds populated and merchant populated
+});
+```
+
+基于分布式文件存储的数据库，使用C++编写，旨在为Web应用提供可扩展高性能的数据存储服务。
+
+它介于关系数据库与非关系数据库之间，是非关系数据库中功能最丰富最接近关系数据库的数据库。
+
+关系数据库（RDBMSs）遵循ACID原则
+
+- Atomicity-原子性
+- Consistency-一致性
+- Isolation-独立性
+- Durability-持久性
+
+NoSQL（Not only SQL），即非关系型数据库。
+
+MongoDB将数据存储为一个文档，数据结构为键值对（类似JSON对象）。
+
+MongoDB管理工具
+
+- 监控
+ + Munin - 网络和系统监控，为MongoDB的插件
+ + Gangila - 系统监视，也是插件
+ + Cacti - 图形界面查看CPU利用率、网络带宽利用率，也是插件
+- GUI
+ + Fang of Mongo – 网页式,由Django和jQuery所构成。
+ + Futon4Mongo – 一个CouchDB Futon web的mongodb山寨版。
+ + Mongo3 – Ruby写成。
+ + MongoHub – 适用于OSX的应用程序。
+ + Opricot – 一个基于浏览器的MongoDB控制台, 由PHP撰写而成。
+ + Database Master — Windows的mongodb管理工具
+ + RockMongo — 最好的PHP语言的MongoDB管理工具，轻量级, 支持多国语言
+
+注册 MongoDB 服务：`mongod.exe --logpath "D:\MongoDB\data\log\mongodb.log" --logappend --dbpath "D:\MongoDB\data\db\\" --serviceName "MongoDB" --serviceDisplayName "MongoDB" --install`
+
+删除已注册的服务：`sc delete MongoDB`
+
+启动服务：`net start MongoDB`

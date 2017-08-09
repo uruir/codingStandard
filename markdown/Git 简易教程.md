@@ -48,6 +48,102 @@ ssh -T git@github.com
 
 ![](http://www.admin10000.com/UploadFiles/Document/201512/09/20151209184619252139.JPG)
 
+只回退 commit 信息，代码不动，用于修改错误的 commit 注释：
+
+```
+git reset --mixed hash
+```
+
+### git config
+
+查看全局 git 配置：`git config --global -l`，另有系统级（--system）和用户级（--local）。
+编辑配置：`git config --global -e`。
+查看当前生效的 git 配置：`git config -l`。
+增加配置项：`git config --add key value`。
+获取配置项：`git config --get key`。
+修改当前项目的配置项：`git config user.name 涂睿`。
+查看配置项：`git config user.name`。
+修改当前用户所有 Git 项目的配置项：`git config --global user.name 涂睿`。
+
+### git
+
+撤销所有修改（未提交到暂存区）：`git checkout . && git clean -xdf`。
+若使用 `git checkout -f or git checkout --` 不会删除新增的文件，不推荐。
+若加入到了暂存区：`git reset --hard && git clean -xdf`。
+架设 Git 服务器，域名使用 `http://git.xxx.com` 之类。
+查看本地所有分支：`git branch`。
+查看远程所有分支：`git branch -r`。
+查看所有分支：`git branch -a`。
+查看所有分支及注释：`git branch -av`。
+切换到本地某分支：`git checkout xxx`。
+获取远程某分支：`git checkout origin/xxx`。
+
+一台电脑多个 SSH
+
+```
+# 制造第一把公钥：
+ssh-keygen -t rsa -C "mywork@email.com"
+# 设置名称为 id_rsa_derek
+# Enter file in which to save the key (~/.ssh/id_rsa): id_rsa_derek
+# 添加到 SSH agent 中
+ssh-add id_rsa_derek
+# 制造第二把公钥：
+ssh-keygen -t rsa -C "yourwork@email.com"
+# 设置名称为 id_rsa_ranpop
+# Enter file in which to save the key (~/.ssh/id_rsa): id_rsa_ranpop
+# 添加到 SSH agent 中
+ssh-add id_rsa_ranpop
+# 将 id_rsa_derek.pub 添加到 derek 帐号的后台 ssh
+# 将 id_rsa_ranpop.pub 添加到 ranpop 帐号的后台 ssh
+# 在 .ssh 目录下配置 config 文件：
+Host derek
+HostName git.coding.net
+User git
+IdentityFile C:\\Users\\zhizoo\\.ssh\\id_rsa_derek
+Host ranpop
+HostName git.coding.net
+User git
+IdentityFile C:\\Users\\zhizoo\\.ssh\\id_rsa_ranpop
+# 对于 derek 帐号下的仓库：
+git clone derek:githubname/repository.git
+# 原地址是：git@github.com:githubname/repository.git，替换后应该是：derek:githubname/repository.git
+# 对于 ranpop 帐号下的仓库：
+git clone ranpop:githubname/repository.git
+# 原地址是：git@github.com:githubname/repository.git，替换后应该是：ranpop:githubname/repository.git
+# 测试：
+ssh -T derek
+# Hi derek! You've successfully authenticated, but GitHub does not provide shel l access.
+ssh -T ranpop
+# Hi ranpop! You've successfully authenticated, but GitHub does not provide shel l access.
+# 如果已经使用原地址克隆过了，可以使用命令修改：
+git remote set-url origin derek:githubname/repository.git
+# 目前的配置
+Host uRuier
+HostName git.coding.net
+User git
+IdentityFile C:\\Users\\zhizoo\\.ssh\\uRuier
+Host uruir
+HostName github.com
+User git
+IdentityFile C:\\Users\\zhizoo\\.ssh\\uRuier
+Host id_rsa
+HostName git.coding.net
+User git
+IdentityFile C:\\Users\\zhizoo\\.ssh\\id_rsa
+```
+
+通过 `git remote -v` 查看远程分支，或在 `.git/config` 中查看 Git 信息。
+
+查看所有分支 `git branch -a`，只看远程分支 `git branch -r`
+
+分支间对比 `git diff origin/master master`
+
+`git push origin master:master` 将本地 master （冒号前的 master）推送到远程 master，若省略冒号后的 master，则默认为与当前提交一致的分支，即 master。若远程无此分支，则新建
+
+删除远程分支 `git push origin:mybranch`，即使用地址空分支推送到远程 mybranch 分支
+
+若当前分支游离于主分支，且比主分支更新。则新建分支  `git branch tmp xxxxxxx`，然后切换到主分支 `git checkout master`，再进行合并 `git merge tmp`，之后就可以删掉临时分支了 `git branch -d tmp`。
+
 ## 初始化跟踪
 
 表示对当前目录（Windows 下称文件夹，*nix 下称目录）实行 Git 版本管理：
