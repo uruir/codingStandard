@@ -138,9 +138,11 @@ IdentityFile C:\\Users\\zhizoo\\.ssh\\id_rsa
 
 分支间对比 `git diff origin/master master`
 
-`git push origin master:master` 将本地 master （冒号前的 master）推送到远程 master，若省略冒号后的 master，则默认为与当前提交一致的分支，即 master。若远程无此分支，则新建
+`git push origin master:master` 将本地 master （冒号前的 master）推送到远程 master，若省略冒号后的 master，则默认为与当前提交一致的分支，即 master。若远程无此分支，则新建。
 
-删除远程分支 `git push origin:mybranch`，即使用地址空分支推送到远程 mybranch 分支
+`git push origin localbranch:originbranch`，提交本地分支 `localbranch` 到远程 `originbranch`。
+
+删除远程分支 `git push origin :mybranch`，即使用地址空分支推送到远程 mybranch 分支
 
 若当前分支游离于主分支，且比主分支更新。则新建分支  `git branch tmp xxxxxxx`，然后切换到主分支 `git checkout master`，再进行合并 `git merge tmp`，之后就可以删掉临时分支了 `git branch -d tmp`。
 

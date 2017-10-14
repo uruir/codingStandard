@@ -30,5 +30,5 @@ util.gray('明天', moment().add(1, 'days').calendar())
 
 util.gray('时间戳转日期：', moment(1471224865000).format('MM/DD/YYYY'))
 
+// X 秒；x 毫秒
 util.gray('日期转时间戳：', moment("07192017-00:00:00", "MMDDYYYY-HH:mm:ss").format('X'))
-
