@@ -303,12 +303,6 @@ git branch -m before after
 git checkout name
 ```
 
-### 新建分支并切换到新分支
-
-```
-git checkout -b name
-```
-
 ### 新建分支并指向指定 commit
 
 ```
@@ -361,13 +355,32 @@ git commit -am "xxx"
 git log
 ```
 
-### 编辑最后一次的提交信息
+### 将当前改动追加到上一次提交
 
 ```
 git commit --amend -m "编辑最后一次的提交信息"
 ```
 
-当然若是修改了代码，提交会把修改的也一起提交了。
+### 将某个功能点从 branchA 移动到 branchB 上
+
+```
+git cherry-pick <SHA1>...
+```
+
+直接更改某次提交的操作步骤:
+
+将HEAD移到需要更改的commit上:
+git rebase f744c32cf74454a74bb2f80e5e38b120cb475af1^ --interactive
+找到需要更改的commit, 将行首的pick改成edit, 按esc, 输入:wq退出
+更改文件
+使用git add 改动的文件添加改动文件到暂存
+使用git commit --amend追加改动到第一步中指定的commit上
+使用git rebase --continue移动HEAD到最新的commit处
+这里会有冲突, 需要解决:
+编辑冲突文件, 解决冲突
+git add .
+git commit --amend
+解决冲突之后再执行git rebase --continue
 
 ### 撤销最后一次代码提交
 
@@ -498,7 +511,7 @@ git push [remote] --tags
 ### 新建一个分支，指向某个 tag
 
 ```
-git checkout -b [branch] [tag]
+git checkout -b [branchName] [SHA1]
 ```
 
 ## 查看信息
@@ -544,6 +557,12 @@ git blame [file]
 
 ```
 git diff
+```
+
+### 显示两个版本间的差异
+
+```
+git diff <SHA1> <SHA2>
 ```
 
 ### 显示暂存区和上一个 commit 的差异

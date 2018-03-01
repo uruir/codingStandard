@@ -14,7 +14,17 @@ sudo mdutil -a -i on
 
 ## 修复系统
 
+### 清除缓存
+
 开机的时候按住 `cmd + option + P + R`，直到三声“duang”之后松手，第四声为开机声。
+
+### 设置管理员权限或忘记账号密码
+
+1. 开机时按住 `cmd + s`
+2. 输入 `/sbin/mount -uaw`
+3. 输入 `rm /var/db/.AppleSetupDone`
+4. 输入 `reboot` 重启电脑
+5. 像用新电脑时一样设置新的管理员，用新管理员修改其他账号信息
 
 ## 接口
 
@@ -79,9 +89,11 @@ sudo mdutil -a -i on
 
 ### 修改 launchpad 每页显示的应用数
 
+注意：下列代码中 columns 代表每页显示的列数；rows 代表显示行数；更改后会解开文件夹，所有应用平铺在 launchpad；
+
 ```
-defaults write com.apple.dock springboard-columns -int 9;
-defaults write com.apple.dock springboard-rows -int 6;
+defaults write com.apple.dock springboard-columns -int 10;
+defaults write com.apple.dock springboard-rows -int 8;
 defaults write com.apple.dock ResetLaunchPad -bool TRUE;
 killall Dock
 ```
@@ -99,6 +111,12 @@ sqlite3 $(sudo find /private/var/folders -name com.apple.dock.launchpad)/db/db "
 ### touchbar
 
 在“系统偏好设置”的“键盘”里，在第一个 Tab 选项“键盘”里可以设置 touchbar 的显示内容。在第三个 Tab “快捷键”的“功能键”可以设置某个应用始终显示功能键。比如编辑 IDE 就可以设置为一直 F1-F12。
+
+### TotalFinder
+
+1. 重启时按 CMD + R
+2. csrutil disable
+3. csrutil enable
 
 ## 系统应用
 

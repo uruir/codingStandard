@@ -220,7 +220,7 @@ var fs = require('fs-extra');
 var dn = __dirname;
 var file = dn + '/dest.json';
 
-fs.writetJson(file, {name: 'JP'}, function (err) {
+fs.writeJson(file, {name: 'JP'}, function (err) {
   console.log(err) // => null
   
   // 读 JSON 文件

@@ -17,7 +17,7 @@ var start = async function () {
       var result = await sleep(1000)
       await sleep(1000);
       console.log(`${result} - 第 ${i} 次等待...`);
-      if (i++ > 5) {
+      if (i++ > 2) {
         stop = true
       }
     }
@@ -27,5 +27,6 @@ var start = async function () {
   }
 }
 
+console.log('aaa')
 start()
-
+console.log('bbb')
