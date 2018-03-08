@@ -43,22 +43,23 @@ sudo mdutil -a -i on
 > `cmd` 指空格键左侧的“花”键，全名 `command`，对应 windows 下 `Win` 键
 > `option` 即 windows 下的 `Alt` 键
 
-- cmd + H: 隐藏当前窗口
-- cmd + M：最小化当前窗口
-- cmd + option + H: 隐藏除当前窗口之外所有窗口
-- cmd + option + M: 最小化所有同类窗口，比如所有 finder
-- cmd + option + M + H：显示桌面；也可以按下 `F11`
-- option + 窗口左上角全屏按钮：最大化当前窗口
-- cmd + shift + 3：全屏截图
-- cmd + shift + 4：区域截图
-- 在 finder 里选中某文件后按空格键预览该文件（连视频都能预览，不需要打开视频播放器）
-- cmd + option + shift + esc：强制退出当前软件
-- cmd + option + esc：选择需要强制退出的软件（比如 mac 版的 QQ，使用其自带的截图就会造成系统假死，这时就可以通过该快捷键杀死 QQ）
-- cmd + option + v：剪切到目标文件夹（mac 没有剪切功能，复制依然使用 cmd + c，粘贴使用 cmd + v，当要剪切到目标文件夹时多按一个 option 键即可）
-- cmd + H：隐藏当前窗口
-- cmd + shift + D：打开桌面文件夹（在 finder 中，按 cmd + shift + A 进入“应用程序”）
-- cmd + option + D：显示/隐藏 Dock
--
+|key|remark|
+|:---:|:---:|
+|cmd + H|隐藏当前窗口|
+|cmd + M||
+|cmd + option + H|隐藏除当前窗口之外所有窗口|
+|cmd + option + M|最小化所有同类窗口，比如所有 finder|
+|cmd + option + M + H|显示桌面；也可以按下 `F11`|
+|option + 窗口左上角全屏按钮：|最大化当前窗口|
+|cmd + shift + 3|全屏截图|
+|cmd + shift + 4|区域截图|
+|cmd + option + shift + esc|强制退出当前软件|
+|cmd + option + esc|强制退出软件|
+|cmd + option + v|剪切到目标文件夹|
+|cmd + H|隐藏当前窗口|
+|cmd + shift + D|打开桌面文件夹（在 finder 中，按 cmd + shift + A 进入“应用程序”）|
+|cmd + option + D|显示/隐藏 Dock|
+|ctrl + 左右键|左右切换桌面|
 
 ### 触摸板手势
 
