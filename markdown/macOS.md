@@ -43,8 +43,10 @@ sudo mdutil -a -i on
 > `cmd` 指空格键左侧的“花”键，全名 `command`，对应 windows 下 `Win` 键
 > `option` 即 windows 下的 `Alt` 键
 
+- cmd + H: 隐藏当前窗口
 - cmd + M：最小化当前窗口
-- cmd + option + M：最小化所有同类窗口，比如所有 finder
+- cmd + option + H: 隐藏除当前窗口之外所有窗口
+- cmd + option + M: 最小化所有同类窗口，比如所有 finder
 - cmd + option + M + H：显示桌面；也可以按下 `F11`
 - option + 窗口左上角全屏按钮：最大化当前窗口
 - cmd + shift + 3：全屏截图

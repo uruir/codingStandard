@@ -19,18 +19,18 @@ console.log(workbook.Strings)
 console.log(workbook.Styles)
 console.log(workbook.Themes)
 console.log(workbook.SSF)
-fs.writeFile(path.resolve(__dirname, 'to.json'), JSON.stringify(workbook), function (err) {
-  if (err) {
-    console.warn('Error: ', e)
-  }
+fs.writeFile(path.resolve(__dirname, 'to.json'), JSON.stringify(workbook), function(err) {
+    if (err) {
+        console.warn('Error: ', e)
+    }
 })
 
 // 获取 A1 单元格对象
 var a1 = worksheet['A1']; // 返回 { v: 'hello', t: 's', ... }
 // 获取 A1 中的值
 a1.v // 返回 'hello'
-// 获取表的有效范围
+    // 获取表的有效范围
 worksheet['!ref'] // 返回 'A1:B20'
 worksheet['!range'] // 返回 range 对象，{ s: { r: 0, c: 0}, e: { r: 100, c: 2 } }
-// 获取合并过的单元格
+    // 获取合并过的单元格
 worksheet['!merges'] // 返回一个包含 range 对象的列表，[ {s: { r: 0, c: 0 }, c: { r: 2, c: 1 } } ]
