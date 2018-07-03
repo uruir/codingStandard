@@ -1,3 +1,14 @@
+# 原生数据类型
+
+有 undefined null boolean string number object symbol 七种，symbol 在 ES6 添加，Symbol 是一个方法，`typeof Symbol(); // symbol`，不能作为构造函数使用，`new Symbol; // TypeError`。
+
+Symbol 的作用：作为对象属性的唯一标识符，防止对象属性冲突发生。
+
+```
+let a = {age: 30, [Symbol('name')]: 'tr'}, b = {[Symbol('name')]: 'rui'}
+let c = {...a, ...b} // {age: 30, Symbol(name): "tr", Symbol(name): "rui"}
+```
+
 ## 基本数据类型
 
 > 直接修改其值
@@ -110,7 +121,7 @@ undefined == null; //true，除此之外undefined or null与其它值对比都�
         } else {
             obj[str[i]]++; // 如果有'a'，则加1
         }
-    } 
+    }
     // 统计每个字符的个数
     var max = -1, maxKey = '';
     for (var key in obj) {
@@ -145,9 +156,9 @@ log(str.trim()); // 用于删除字符串`str`的前后空格。
 数字、字符串和布尔值“貌似”对象，因为它们拥有方法，但它们是不可变的。JavaScript 中的对象是可变的键控集合（keyed collections）。
 
 在 JavaScript 中，数组是对象，函数是对象，正则表达式也是对象。
-          
+
 对象是属性的容器，其中每个属性都拥有名字和值。属性的名字可以是包括空字符串在内的任意字符串，属性值可以是除`undefined`值外任何值。
-          
+
 JavaScript 中的对象是无类别的，它对新属性的名字和值没有约束。对象适合用于收集和管理数据。
 
 JavaScript 包括一个原型链特性，允许对象继承另一个对象的属性。
@@ -346,4 +357,3 @@ if (!Array.isArray) {
 }
 isArray([]) // true
 ```
-

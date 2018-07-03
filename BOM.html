@@ -1,0 +1,69 @@
+<!doctype html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body contenteditable="true"><h2>window 对象</h2>
+<ul>
+<li>window
+<ul>
+<li>navigator</li>
+<li>screen</li>
+<li>history</li>
+<li>location</li>
+</ul>
+</li>
+</ul>
+<h2>宽度与高度</h2>
+<pre><code>document.documentElement.clientWidth // 浏览器可视宽度 - 滚动条宽度
+document.documentElement.clientHeight // 浏览器可视高度 - 滚动条高度
+
+document.body.scrollHeight === document.body.clientHeight === document.documentElement.scrollHeight // 文档高度
+document.body.scrollWidth === document.body.clientWidth === document.documentElement.scrollWidth // 文档宽度，等于上面的clientWidth
+</code></pre>
+<h2>把页面当成编辑器</h2>
+<pre><code>// 使整个页面可编辑
+document.body.contentEditable = 'true';
+</code></pre>
+<h3>网页中常用的宽高</h3>
+<ul>
+<li>网页可见区域宽：document.body.clientWidth</li>
+<li>网页可见区域高：document.body.clientHeight</li>
+<li>网页可见区域宽：document.body.offsetWidth (包括边线的宽)</li>
+<li>网页可见区域高：document.body.offsetHeight (包括边线的高)</li>
+<li>网页正文全文宽：document.body.scrollWidth</li>
+<li>网页正文全文高：document.body.scrollHeight</li>
+<li>网页被卷去的高：document.body.scrollTop（即当前内容离文档顶部的距离）</li>
+<li>网页被卷去的左：document.body.scrollLeft</li>
+<li>屏幕分辨率的高：window.screen.height</li>
+<li>屏幕分辨率的宽：window.screen.width</li>
+<li>屏幕可用工作区高度：window.screen.availHeight （屏幕的有效高度）</li>
+<li>屏幕可用工作区宽度：window.screen.availWidth  （屏幕的有效宽度）</li>
+</ul>
+<p>HTML精确定位：scrollLeft, scrollWidth, clientWidth, offsetWidth</p>
+<ul>
+<li>scrollHeight: 获取对象的滚动高度。</li>
+<li>scrollLeft：设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离</li>
+<li>scrollTop：设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离</li>
+<li>scrollWidth：获取对象的滚动宽度</li>
+<li>offsetHeight：获取对象相对于版面或由父坐标 offsetParent 属性指定的父坐标的高度</li>
+<li>offsetLeft：获取对象相对于版面或由 offsetParent 属性指定的父坐标的计算左侧位置</li>
+<li>offsetTop：获取对象相对于版面或由 offsetTop 属性指定的父坐标的计算顶端位置</li>
+<li>event.clientX：相对文档的水平座标</li>
+<li>event.clientY：相对文档的垂直座标</li>
+<li>event.offsetX：相对容器的水平坐标</li>
+<li>event.offsetY：相对容器的垂直坐标</li>
+<li>document.documentElement.scrollTop：垂直方向滚动的值</li>
+<li>event.clientX+document.documentElement.scrollTop：相对文档的水平座标+垂直方向滚动的量</li>
+</ul>
+<p><img src="http://jbcdn2.b0.upaiyun.com/2015/12/be02c02be685d24e9cd6d80059217429.jpg" alt="图示"></p>
+<p><code>offsetWidth</code> &amp; <code>offsetHeight</code>对应的是盒模型的宽度和高度，这两个值跟我们使用 Chrome 审查元素时看到的尺寸一致（在 Console 里<code>document.querySelector('#tr').offsetWidth</code>）。</p>
+<p><code>scrollWidth</code> &amp; <code>scrollHeight</code>不包含滚动条。</p>
+<p><code>clientWidth</code> &amp; <code>clientHeight</code>也不包含滚动条。</p>
+<p>那意思是只有 <code>offset</code> 即含边框又含滚动条咯？</p>
+</body>
+    </html>

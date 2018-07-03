@@ -464,11 +464,11 @@ show tables;
 GRANT SELECT,INSERT,DELETE,UPDATE ON test.* TO test IDENTIFIED by 'test';
 mysql test -u test -p
 
+## 常用命令
  
+查找文件内文本：`find . | xargs grep -ri '要查找的文本' -l`
  
-
- 
- 
+查看进程：`ps -ef | grep xxx`
  
  
  
