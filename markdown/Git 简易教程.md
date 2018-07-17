@@ -1,13 +1,3 @@
-title: Git简易教程
-date: 2014-01-17 20:14:29
-categories:
-- 编程工具
-tags:
-- 教程
-- Git
-description: Git的简介，也持续更新～
----
-
 ## 设置用户名和邮箱
 
 分别是 Github 上的用户名和邮箱，用于提交时的身份确认：
@@ -19,19 +9,10 @@ git config --global color.ui auto
 git config --global alias.co checkout
 ```
 
-## 是否开启 ssh-keygen
-
-验证本机是否有 ssh：
-
-```
-ssh-keygen -s
-```
-
-如果在 Windows 下，需要安装 Git 客户端，在 Git Bash 中检查。
 
 ### 生成密钥
 
-若没有则要生成一个 key，按提示输入相应内容即可：
+Windows 下，使用 Git Bash。
 
 ```
 ssh-keygen -t rsa -C "xxx@xxx.com"
