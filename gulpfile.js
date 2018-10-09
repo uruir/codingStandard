@@ -1,5 +1,5 @@
-var gulp = require('gulp');
-var babel = require('gulp-babel');
+import gulp from 'gulp'
+import babel from 'gulp-babel'
 
 gulp.task('babelify', function () {
     return gulp
