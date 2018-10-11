@@ -2,7 +2,6 @@
 .git
 .gitignore
 node_modules
-package.json
-test*
+turui*
 build/
 static/
