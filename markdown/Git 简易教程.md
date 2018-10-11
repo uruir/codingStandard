@@ -736,4 +736,25 @@ git update-index --no-assume-unchanged file.name // 重新跟踪
 git archive
 ```
 
+## 将 web 合并到 server
+
+在服务端代码根目录
+git clone git@gitlab.com:company/project/web.git web
+git fetch web
+git checkout -b web web/develop
+git checkout develop
+git merge web —allow-unrelaed-histories
+
+## 将上述两仓库拆开
+
+在服务端代码根目录
+git subtree split -P web -b web
+
+## 将原有子仓库与拆开的合并
+
+在网页端代码根目录
+git remote add father git@gitlab.com:a/b/server.git
+git fetch father web:web
+git merge web —allow-unrelated-histories
+
 **本文部分内容来源于：http://try.github.io/levels/1/challenges/1**
