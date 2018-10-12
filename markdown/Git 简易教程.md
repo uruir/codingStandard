@@ -173,6 +173,8 @@ git rm [file1] [file2] ...
 git rm --cached [file]
 ```
 
+若要删除文件夹使用 -r
+
 ### 改名文件，并且将这个改名放入暂存区
 
 ```
@@ -628,6 +630,8 @@ git remote add [shortname] [url]
 git pull [remote] [branch]
 ```
 
+这里 remote 可以是本地一个 git 文件夹
+
 ### 上传本地指定分支到远程仓库
 
 ```
@@ -756,5 +760,13 @@ git subtree split -P web -b web
 git remote add father git@gitlab.com:a/b/server.git
 git fetch father web:web
 git merge web —allow-unrelated-histories
+
+## 显示某目录中曾经缓存过的文件
+
+git ls-files --stage somefolder
+
+## 添加子仓库
+
+git submodule add git@gitlab.com:betrends/track/web.git web
 
 **本文部分内容来源于：http://try.github.io/levels/1/challenges/1**
