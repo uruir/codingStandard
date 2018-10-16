@@ -1,3 +1,4 @@
+import fs from 'fs';
 import moment from 'moment';
 
 type Maybe<T> = T | void;
@@ -111,3 +112,24 @@ export const formatTime = (time: string | number, toFormat: TimeFormat = TimeFor
         return '-'
     }
 }
+
+export const delDir = (path) => {
+    try {
+        let files = [];
+        if (fs.existsSync(path)) {
+            files = fs.readdirSync(path);
+            files.forEach((file, index) => {
+                let curPath = path + "/" + file;
+                if (fs.statSync(curPath).isDirectory()) {
+                    delDir(curPath);
+                } else {
+                    fs.unlinkSync(curPath);
+                }
+            });
+            fs.rmdirSync(path);
+            console.info('成功：删除文件夹', path)
+        }
+    } catch (e) {
+        console.error('错误：删除文件夹', path, e)
+    }
+};
