@@ -1,4 +1,4 @@
-###适合的领域
+## 适合的领域
 - Web网站和各种网络服务
 - 系统工具和脚本
 - 作为“胶水”语言把其他语言开发的模块包装起来方便使用
@@ -15,26 +15,26 @@ cd 目录名 //切换到该目录下
 dir //显示当前目录下文件内容
 python hello.py //运行保存的py文件
 ```
-###支持的数据类型
+## 支持的数据类型
 - 整数。int('123', 8) //8进制，默认10进制
 - 浮点数
 - 字符串，用'' or ""包围
 - 布尔值，取True or False，可通过and or not三个运算符得到布尔值，等号用==，python把0、空字符串和None都看成False
 - 空值，用None表示
 - 其它，如列表、字典和自定义等类型
-###print语句
+## print语句
 ```
 print 'turui', 'love', 'nmq' //连接字符串，遇到“，”会加空格
 ```
-###注释
+## 注释
 ```
 # 这一行是注释
 ```
-###转义
+## 转义
 当有很多字符要转义时，通过“\"很麻烦
 所以用“r'''...'''”括起来
 表示...的内容原样输出
-###编码
+## 编码
 - ASCII //英文，单字节
 - GB2312 //中文，双字节
 - Unicode //万国码，双字节
@@ -51,7 +51,7 @@ ur'''Python的Unicode字符串支持“中文”，
 ```
 # -*- coding: utf-8 -*-
 ```
-###List and tupple
+## List and tupple
 ```
 L = ['turui', 27]
 print L[0] //turui
@@ -79,7 +79,7 @@ L.pop(2) //从索引位置删
 t = ('Adam', 'Lisa', 'Bart',) //t[2]的值是Bart
 ```
 函数返回多值是一个tuple
-###if
+## if
 ```
 score = 75
 if score >= 60:
@@ -98,7 +98,7 @@ elif age >= 6:
 else:
     print 'kid'
 ```
-###for
+## for
 ```
 L = [75, 92, 59, 68]
 sum = 0.0
@@ -106,7 +106,7 @@ for i in L:
     sum += i
 print sum / 4
 ```
-###while
+## while
 ```
 sum = 0
 x = 1
@@ -145,7 +145,7 @@ for x in [1, 2, 3, 4, 5, 6, 7, 8, 9]:
         if x < y:
             print x * 10 + y
 ```
-###dict无序但快速，key不能重值
+## dict无序但快速，key不能重值
 ```
 d = {
     'Adam': 95,
@@ -178,7 +178,7 @@ d = {
 for name in d:
     print name + ':', d.get(name)
 ```
-###set，无序且不重复
+## set，无序且不重复
 ```
 s = set(['Adam', 'Lisa', 'Bart', 'Paul'])
 print
@@ -220,11 +220,11 @@ for name in L:
         s.add(name)
 print s
 ```
-###帮助
+## 帮助
 ```
 help(abs)
 ```
-###函数
+## 函数
 ```
 L = []
 x = 1
@@ -284,7 +284,7 @@ print average()
 print average(1, 2)
 print average(1, 2, 2, 3, 4)
 ```
-###切片
+## 切片
 ```
 L[::2] //冒号前后没有值表0或最大索引，最后的2表示隔2个取值
 ```
@@ -295,7 +295,7 @@ range(1, 101) //[1, 2, 3, ..., 100]
 ```
 'abcde'[:3] //abc
 ```
-####字符串方法
+## #字符串方法
 大写
 ```
 'abc'.upper() //ABC
@@ -313,7 +313,7 @@ print firstCharUpper('september')
 1. 有序集合：list，tuple，str和unicode；
 2. 无序集合：set
 3. 无序集合并且具有 key-value 对：dict
-###迭代
+## 迭代
 ```
 for i in range(1, 101):
     if i % 7 == 0:

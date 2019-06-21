@@ -54,8 +54,6 @@ HTML精确定位：scrollLeft, scrollWidth, clientWidth, offsetWidth
 - document.documentElement.scrollTop：垂直方向滚动的值  
 - event.clientX+document.documentElement.scrollTop：相对文档的水平座标+垂直方向滚动的量 
 
-![图示](http://jbcdn2.b0.upaiyun.com/2015/12/be02c02be685d24e9cd6d80059217429.jpg)
-
 `offsetWidth` & `offsetHeight`对应的是盒模型的宽度和高度，这两个值跟我们使用 Chrome 审查元素时看到的尺寸一致（在 Console 里`document.querySelector('#tr').offsetWidth`）。
 
 `scrollWidth` & `scrollHeight`不包含滚动条。
