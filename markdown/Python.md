@@ -15,6 +15,18 @@ cd 目录名 //切换到该目录下
 dir //显示当前目录下文件内容
 python hello.py //运行保存的py文件
 ```
+
+## python2 和 python3 共存于 windows 时
+
+```
+py -2 xxx.py
+py -3 xxx.py
+```
+
+若要自动运行，需要在每个 python 文件头添加 `#! python2` 或 `#! python3`。此时运行 `py xxx.py` 即可。
+
+运行 pip 可使用 `py -2 -m pip install xxx` 或 `py -3 -m pip install xxx`。
+
 ## 支持的数据类型
 - 整数。int('123', 8) //8进制，默认10进制
 - 浮点数

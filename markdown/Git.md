@@ -18,6 +18,8 @@ Windows 下，使用 Git Bash。
 ssh-keygen -t rsa -C "xxx@xxx.com"
 ```
 
+一路回车使用默认值即可创建公钥，将生成的 `C:\Users\yourname\.ssh\id_rsa.pub` 里的内容复制到 `https://github.com/settings/keys`，将本机与 github 连通，此后提交代码到 github 时便不需要使用密码。
+
 ### 验证安装
 
 ```
