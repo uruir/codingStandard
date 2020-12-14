@@ -207,7 +207,7 @@ HTTP/2构建在Google SPDY协议基础上，重要特性
 - 首部使用HPACK协议压缩（SPDY使用Gzip）
 - 拥有复杂的优先级排定规则，帮助浏览器首先请求最急需的文件
 
-### HTTP / 2协议概述
+### HTTP/2 协议概述
 HTTP/2 提供了HTTP语义的传输优化。HTTP/2支持所有HTTP／1.1的核心特征，并且在其他方面做的更高效。
 
 HTTP/2中基本的协议单位是帧。每个帧都有不同的类型和用途。例如，报头(HEADERS)和数据(DATA)帧组成了基本的HTTP 请求和响应；其他帧例如设置(SETTINGS)、窗口更新(WINDOW_UPDATE)和推送承诺(PUSH_PROMISE)是用来实现HTTP/2的其他功能。

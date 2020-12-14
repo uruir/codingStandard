@@ -48,6 +48,12 @@ sudo mdutil -a -i on
 
 ## 系统设置
 
+### 登录界面显示其它账号
+
+```
+sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool TRUE
+```
+
 ### 已删除的应用还残留在 launchpad 中
 
 打开 launchpad，按住 `option` 键，出现 `X` 后点击删除之。
